@@ -17,19 +17,14 @@ export const GlobalStyle = createGlobalStyle`
   margin: 0;
 
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    font-family:  'Montserrat';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
+  text-transform: uppercase;
    background-color: rgb(231 236 242);
       color: rgb(1,67,97);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 
 ul {
   list-style: none;

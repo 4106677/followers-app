@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const List = styled.ul`
@@ -15,9 +16,39 @@ export const List = styled.ul`
   color: #ebd8ff;
 
   text-align: center;
-  /* align-items: center; */
-  /* justify-content: center; */
-  /* justify-self: center; */
+`;
+
+export const Btn = styled(NavLink)`
+  &.active {
+  }
+  :hover:not(.active),
+  :focus-visible:not(.active) {
+    background: #ebd8ff;
+  }
+
+  position: fixed;
+
+  z-index: 1;
+  bottom: 36px;
+  right: 36px;
+
+  background: #5cd3a8;
+
+  height: 50px;
+
+  padding: 14px;
+
+  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  border: none;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+
+  text-transform: uppercase;
 `;
 
 export const UserCard = styled.li`

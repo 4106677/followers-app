@@ -16,7 +16,7 @@ export default styled.button`
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
-
+  color: #373737;
   text-transform: uppercase;
 
   background: ${props => (props.follow ? `#5CD3A8` : ` #ebd8ff`)};
