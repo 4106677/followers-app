@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/followers-app/static/js/main.8fd2a659.js",
+    "main.js": "/followers-app/static/js/main.c923f427.js",
     "static/js/304.ab5a3562.chunk.js": "/followers-app/static/js/304.ab5a3562.chunk.js",
-    "static/js/385.4ea2e2f4.chunk.js": "/followers-app/static/js/385.4ea2e2f4.chunk.js",
+    "static/js/301.8bd87e6e.chunk.js": "/followers-app/static/js/301.8bd87e6e.chunk.js",
     "static/js/468.c34d8a88.chunk.js": "/followers-app/static/js/468.c34d8a88.chunk.js",
     "static/media/cardHeader.png": "/followers-app/static/media/cardHeader.287441705917ea9d8eef.png",
     "static/media/logo.svg": "/followers-app/static/media/logo.e917114d7945c04c85a8946a331d28b6.svg",
     "index.html": "/followers-app/index.html",
-    "main.8fd2a659.js.map": "/followers-app/static/js/main.8fd2a659.js.map",
+    "main.c923f427.js.map": "/followers-app/static/js/main.c923f427.js.map",
     "304.ab5a3562.chunk.js.map": "/followers-app/static/js/304.ab5a3562.chunk.js.map",
-    "385.4ea2e2f4.chunk.js.map": "/followers-app/static/js/385.4ea2e2f4.chunk.js.map",
+    "301.8bd87e6e.chunk.js.map": "/followers-app/static/js/301.8bd87e6e.chunk.js.map",
     "468.c34d8a88.chunk.js.map": "/followers-app/static/js/468.c34d8a88.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.8fd2a659.js"
+    "static/js/main.c923f427.js"
   ]
 }
