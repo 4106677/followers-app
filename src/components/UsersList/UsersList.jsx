@@ -34,15 +34,14 @@ const UsersList = () => {
   const limit = matchMedia();
 
   useEffect(() => {
-    const fetch = async () => {
+    (async () => {
       const data = await getUsers(page, limit);
 
       setIsMore((await getUsers()) / limit <= page);
       setUsers(prevUsers => {
         return [...compared(prevUsers, data), ...data];
       });
-    };
-    fetch();
+    })();
   }, [page, limit]);
 
   useEffect(() => {
@@ -57,6 +56,21 @@ const UsersList = () => {
       : setFollow([...follow, id]);
   };
 
+  const filtredUsers = users.filter(user => {
+    if (filter === 'follow')
+      // return !follow.includes(user.id);
+      // return !user.isFollow;
+      console.log('filter === follow');
+    if (filter === 'followings') console.log('filter === followings');
+    // return user.isFollow;
+    console.log('filter === followings');
+    return user;
+  });
+  // .sort((a, b) => a.id - b.id);
+  //  .splice(0, indexLimit);
+
+  console.log(filtredUsers);
+
   return (
     <>
       <NavContainer>
@@ -65,7 +79,7 @@ const UsersList = () => {
       </NavContainer>
 
       <List>
-        {users.map(({ user, tweets, followers, avatar, id }) => (
+        {filtredUsers.map(({ user, tweets, followers, avatar, id }) => (
           <UserCard key={id}>
             <img src={cardHeader} loading="lazy" alt="Header Title" />
             <GoItLogo src={logo} alt="GoIT" />
