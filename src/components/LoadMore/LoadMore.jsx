@@ -1,7 +1,12 @@
+import { NavContainer } from 'components/UsersList/UsersList.styled';
+
 export const LoadMore = ({ onClick }) => {
   return (
-    <button type="button" onClick={onClick}>
-      Load More
-    </button>
+    <NavContainer>
+      {' '}
+      <button type="button" onClick={onClick}>
+        Load More
+      </button>
+    </NavContainer>
   );
 };

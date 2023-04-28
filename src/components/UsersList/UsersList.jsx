@@ -59,7 +59,11 @@ const UsersList = () => {
 
   return (
     <>
-      <Dropdown setFilter={setFilter} def={filter} />
+      <NavContainer>
+        <Btn to={'/'}>To Home</Btn>
+        <Dropdown setFilter={setFilter} def={filter} />
+      </NavContainer>
+
       <List>
         {users.map(({ user, tweets, followers, avatar, id }) => (
           <UserCard key={id}>
@@ -95,10 +99,8 @@ const UsersList = () => {
           </UserCard>
         ))}
       </List>
-      <NavContainer>
-        <Btn to={'/'}>To Home</Btn>
-        {!isMore && <LoadMore onClick={() => setPage(page + 1)} />}
-      </NavContainer>
+
+      {!isMore && <LoadMore onClick={() => setPage(page + 1)} />}
     </>
   );
 };

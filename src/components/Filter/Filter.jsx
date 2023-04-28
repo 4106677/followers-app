@@ -1,3 +1,5 @@
+import { Drop, Select } from './Filter.styled';
+
 export const Dropdown = ({ setFilter, def }) => {
   const onChange = e => {
     e.preventDefault();
@@ -5,17 +7,14 @@ export const Dropdown = ({ setFilter, def }) => {
   };
 
   return (
-    <>
-      <div>
-        <p>Sort to</p>
-        <form onChange={onChange}>
-          <select name="sort" defaultValue={def} required>
-            <option value="all">Show All</option>
-            <option value="follow">Follow</option>
-            <option value="followings">Followings</option>
-          </select>
-        </form>
-      </div>
-    </>
+    <Drop>
+      <form onChange={onChange}>
+        <Select name="sort" defaultValue={def} required>
+          <option value="all">Show All</option>
+          <option value="follow">Follow</option>
+          <option value="followings">Followings</option>
+        </Select>
+      </form>
+    </Drop>
   );
 };
