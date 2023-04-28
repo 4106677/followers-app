@@ -15,6 +15,7 @@ import Button from '../FollowButton/FollowButton';
 import { useEffect, useState } from 'react';
 import { getAllUsers } from '../../services/Api';
 import { compared } from '../../helpers/compared';
+import { LoadMore } from 'components/LoadMore/LoadMore';
 
 const UsersList = () => {
   const [users, setUsers] = useState([]);
@@ -165,9 +166,10 @@ const UsersList = () => {
           </UserCard>
         ))}
       </List>
-      <button type="button" onClick={() => setPage(page + 1)}>
+      {/* <button type="button" onClick={() => setPage(page + 1)}>
         Load More
-      </button>
+      </button> */}
+      <LoadMore onClick={() => setPage(page + 1)} />
     </>
   );
 };
