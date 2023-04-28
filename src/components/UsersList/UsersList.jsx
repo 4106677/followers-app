@@ -18,72 +18,33 @@ import { getUsers } from '../../services/Api';
 import { compared } from '../../helpers/compared';
 import { LoadMore } from 'components/LoadMore/LoadMore';
 import { matchMedia } from 'helpers/matchMedia';
+import { Dropdown } from 'components/Filter/Filter';
 
 const UsersList = () => {
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
   const [isMore, setIsMore] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [filter, setFilter] = useState('all');
   const [follow, setFollow] = useState(() => {
     return JSON.parse(localStorage.getItem('follow')) ?? [];
   });
+
   const limit = matchMedia();
-  // const totalUsers = getUsers();
-  // console.log(totalUsers);
 
   useEffect(() => {
     const fetch = async () => {
       const data = await getUsers(page, limit);
-      // const qqq = (await getUsers()) / limit <= page;
+
       setIsMore((await getUsers()) / limit <= page);
-
       setUsers(prevUsers => {
-        // const newUser = data.map(user => {
-        //   // if (follow.includes(user.id)) {
-        //   //   return { ...user, isFollow: true };
-        //   // }
-        //   return { ...user };
-        // });
-
-        // console.log(newUser);
-
         return [...compared(prevUsers, data), ...data];
       });
     };
     fetch();
   }, [page, limit]);
 
-  // const [users, setUsers] = useState(() => {
-  //   return JSON.parse(localStorage.getItem('users')) ?? [];
-  // });
-
-  // useEffect(() => {
-  //   if (!users || users.length === 0) {
-  //     getAllUsers()
-  //       .then(res => {
-  //         setUsers(res.data);
-  //       })
-  //       .catch(err => {
-  //         console.log(err.message);
-  //       });
-  //   }
-
-  //   window.localStorage.setItem('users', JSON.stringify(users));
-  // }, [users]);
-
-  // useEffect(() => {
-  //   getAllUsers(page)
-  //     .then(newUsers => {
-  //       setUsers(prevState => [...prevState, ...newUsers]);
-  //       //
-  //       // setUsers(res.data);
-  //     })
-  //     .catch(err => {
-  //       console.log(err.message);
-  //     });
-  // }, [page]);
-
   useEffect(() => {
-    // window.localStorage.setItem('users', JSON.stringify(users));
     window.localStorage.setItem('follow', JSON.stringify(follow));
   }, [users, follow]);
 
@@ -91,45 +52,11 @@ const UsersList = () => {
     follow.includes(id)
       ? setFollow(follow.filter(i => i !== id))
       : setFollow([...follow, id]);
-
-    // if (!subscribe) {
-    //   setUsers(
-    //     users.map(user =>
-    //       user.id === id
-    //         ? { ...user, id, followers: followers + 1, subscribe: true }
-    //         : user
-    //     )
-    //   );
-    // } else {
-    //   setUsers(
-    //     users.map(user =>
-    //       user.id === id
-    //         ? { ...user, id, followers: followers - 1, subscribe: false }
-    //         : user
-    //     )
-    //   );
-    // }
   };
-
-  // const onLoadMore = () => {
-  //   setPage(page => page + 1);
-
-  //   // await getAllUsers(page)
-  //   //   .then(res => {
-  //   //     setUsers(users => [...users, ...res.data]);
-  //   //     // setUsers(res.data);
-  //   //   })
-  //   //   .catch(err => {
-  //   //     console.log(err.message);
-  //   //   });
-  // };
-
-  // const followChecker = id => {
-  //   return follow.includes(id);
-  // };
 
   return (
     <>
+      <Dropdown />
       <List>
         {users.map(({ user, tweets, followers, avatar, id, subscribe }) => (
           <UserCard key={id}>
@@ -154,11 +81,6 @@ const UsersList = () => {
                   : followers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                 &nbsp;Followers
               </p>
-              {/* <p>
-                {followers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                &nbsp; Followers
-              </p> */}
-
               <Button
                 followList={
                   follow.includes(id)
@@ -173,9 +95,6 @@ const UsersList = () => {
           </UserCard>
         ))}
       </List>
-      {/* <button type="button" onClick={() => setPage(page + 1)}>
-        Load More
-      </button> */}
       <NavContainer>
         <Btn to={'/'}>To Home</Btn>
         {!isMore && <LoadMore onClick={() => setPage(page + 1)} />}
