@@ -18,19 +18,28 @@ export const List = styled.ul`
   text-align: center;
 `;
 
+export const NavContainer = styled.div`
+  gap: 20px;
+
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+`;
+
 export const Btn = styled(NavLink)`
   &.active {
   }
   :hover:not(.active),
   :focus-visible:not(.active) {
     background: #ebd8ff;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.5);
   }
 
-  position: fixed;
+  /* position: fixed; */
 
-  z-index: 1;
-  bottom: 36px;
-  right: 36px;
+  /* z-index: 1; */
+  /* bottom: 36px;
+  right: 36px; */
 
   background: #5cd3a8;
 

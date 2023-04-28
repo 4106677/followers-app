@@ -8,25 +8,33 @@ import {
   UserCard,
   Desc,
   Btn,
+  NavContainer,
 } from './UsersList.styled';
 import cardHeader from '../../images/cardHeader.png';
 import logo from '../../images/logo.svg';
 import Button from '../FollowButton/FollowButton';
 import { useEffect, useState } from 'react';
-import { getAllUsers } from '../../services/Api';
+import { getUsers } from '../../services/Api';
 import { compared } from '../../helpers/compared';
 import { LoadMore } from 'components/LoadMore/LoadMore';
+import { matchMedia } from 'helpers/matchMedia';
 
 const UsersList = () => {
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
+  const [isMore, setIsMore] = useState(false);
   const [follow, setFollow] = useState(() => {
     return JSON.parse(localStorage.getItem('follow')) ?? [];
   });
+  const limit = matchMedia();
+  // const totalUsers = getUsers();
+  // console.log(totalUsers);
 
   useEffect(() => {
     const fetch = async () => {
-      const data = await getAllUsers(page);
+      const data = await getUsers(page, limit);
+      // const qqq = (await getUsers()) / limit <= page;
+      setIsMore((await getUsers()) / limit <= page);
 
       setUsers(prevUsers => {
         // const newUser = data.map(user => {
@@ -42,7 +50,7 @@ const UsersList = () => {
       });
     };
     fetch();
-  }, [page]);
+  }, [page, limit]);
 
   // const [users, setUsers] = useState(() => {
   //   return JSON.parse(localStorage.getItem('users')) ?? [];
@@ -122,7 +130,6 @@ const UsersList = () => {
 
   return (
     <>
-      <Btn to={'/'}>To Home</Btn>
       <List>
         {users.map(({ user, tweets, followers, avatar, id, subscribe }) => (
           <UserCard key={id}>
@@ -169,7 +176,10 @@ const UsersList = () => {
       {/* <button type="button" onClick={() => setPage(page + 1)}>
         Load More
       </button> */}
-      <LoadMore onClick={() => setPage(page + 1)} />
+      <NavContainer>
+        <Btn to={'/'}>To Home</Btn>
+        {!isMore && <LoadMore onClick={() => setPage(page + 1)} />}
+      </NavContainer>
     </>
   );
 };
