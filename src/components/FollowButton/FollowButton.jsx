@@ -1,6 +1,6 @@
 // import { useState } from 'react';
 
-import Btn from './Button.styled';
+import Btn from './FollowButton.styled';
 
 const Button = ({ followList, id, onClick }) => {
   return (
