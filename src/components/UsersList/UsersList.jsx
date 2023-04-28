@@ -1,7 +1,6 @@
 import {
   AvatartWrapper,
   GoItLogo,
-  HeaderImage,
   LineHorisontal,
   List,
   UserAvatar,
@@ -24,8 +23,10 @@ const UsersList = () => {
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
   const [isMore, setIsMore] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [filter, setFilter] = useState('all');
+  // const [isLoading, setIsLoading] = useState(false);
+  const [filter, setFilter] = useState(() => {
+    return JSON.parse(localStorage.getItem('filter')) ?? 'all';
+  });
   const [follow, setFollow] = useState(() => {
     return JSON.parse(localStorage.getItem('follow')) ?? [];
   });
@@ -46,7 +47,9 @@ const UsersList = () => {
 
   useEffect(() => {
     window.localStorage.setItem('follow', JSON.stringify(follow));
-  }, [users, follow]);
+    window.localStorage.setItem('users', JSON.stringify(users));
+    window.localStorage.setItem('filter', JSON.stringify(filter));
+  }, [users, follow, filter]);
 
   const onHandleFollow = id => {
     follow.includes(id)
@@ -56,11 +59,11 @@ const UsersList = () => {
 
   return (
     <>
-      <Dropdown />
+      <Dropdown setFilter={setFilter} def={filter} />
       <List>
-        {users.map(({ user, tweets, followers, avatar, id, subscribe }) => (
+        {users.map(({ user, tweets, followers, avatar, id }) => (
           <UserCard key={id}>
-            <HeaderImage src={cardHeader} loading="lazy" alt="Header Title" />
+            <img src={cardHeader} loading="lazy" alt="Header Title" />
             <GoItLogo src={logo} alt="GoIT" />
             <LineHorisontal>
               <AvatartWrapper>
@@ -82,10 +85,7 @@ const UsersList = () => {
                 &nbsp;Followers
               </p>
               <Button
-                followList={
-                  follow.includes(id)
-                  // followList
-                }
+                followList={follow.includes(id)}
                 id={id}
                 onClick={() => {
                   onHandleFollow(id);

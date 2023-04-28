@@ -35,12 +35,6 @@ export const Btn = styled(NavLink)`
     box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.5);
   }
 
-  /* position: fixed; */
-
-  /* z-index: 1; */
-  /* bottom: 36px;
-  right: 36px; */
-
   background: #5cd3a8;
 
   height: 50px;
@@ -76,10 +70,6 @@ export const UserCard = styled.li`
   position: relative;
 `;
 
-export const HeaderImage = styled.img`
-  /* margin: auto; */
-`;
-
 export const GoItLogo = styled.img`
   position: absolute;
   left: 20px;
@@ -94,7 +84,6 @@ export const LineHorisontal = styled.div`
   height: 8px;
   width: 100%;
   background: #ebd8ff;
-  /* border-bottom: 1px solid #f00; */
 `;
 
 export const AvatartWrapper = styled.div`
@@ -105,10 +94,6 @@ export const AvatartWrapper = styled.div`
 
   width: 80px;
   height: 80px;
-  /* background: #ebd8ff; */
-  /* box-shadow: 0px 4.39163px 4.39163px rgba(0, 0, 0, 0.06),
-    inset 0px -2.19582px 4.39163px #ae7be3,
-    inset 0px 4.39163px 3.29372px #fbf8ff; */
   border: 8px solid;
   border-radius: 50%;
 `;
