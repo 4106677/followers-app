@@ -56,18 +56,19 @@ const UsersList = () => {
       : setFollow([...follow, id]);
   };
 
-  const filtredUsers = users.filter(user => {
-    if (filter === 'follow')
-      // return !follow.includes(user.id);
-      // return !user.isFollow;
-      console.log('filter === follow');
-    if (filter === 'followings') console.log('filter === followings');
-    // return user.isFollow;
-    console.log('filter === followings');
-    return user;
-  });
-  // .sort((a, b) => a.id - b.id);
-  //  .splice(0, indexLimit);
+  const filtredUsers = users
+    .filter(user => {
+      if (filter === 'follow') {
+        return !follow.includes(user.id);
+      }
+      if (filter === 'followings') {
+        return follow.includes(user.id);
+      }
+
+      return user;
+    })
+    // .sort((a, b) => a.id - b.id);
+    .splice(0, limit * page);
 
   console.log(filtredUsers);
 
