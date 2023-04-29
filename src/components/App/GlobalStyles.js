@@ -50,8 +50,7 @@ a {
 
 button {
    &:hover {
-    /* background: red;
-    opacity: 0,8; */
+  
      background: #ebd8ff;
     box-shadow: inset 0px 0px 5px rgba(0,0,0,0.5);
   }

@@ -97,7 +97,6 @@ export const AvatartWrapper = styled.div`
 
   width: 80px;
   height: 80px;
-  /* border: 8px solid; */
   background-color: rgb(235, 216, 255);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 4px,
     rgb(174, 123, 227) 0px -2px 4px inset, rgb(251, 248, 255) 0px 4px 3px inset;

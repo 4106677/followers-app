@@ -1,5 +1,3 @@
-// import { useState } from 'react';
-
 import Btn from './FollowButton.styled';
 
 const Button = ({ followList, id, onClick }) => {
