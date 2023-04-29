@@ -5,7 +5,6 @@ export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  /* align-content: center; */
   justify-content: center;
   font-family: 'Montserrat';
   font-style: normal;
@@ -57,7 +56,7 @@ export const Btn = styled(NavLink)`
 export const UserCard = styled.li`
   width: 380px;
   height: 460px;
-  background: linear-gradient(
+  background-image: linear-gradient(
     114.99deg,
     #471ca9 -0.99%,
     #5736a3 54.28%,
@@ -84,6 +83,10 @@ export const LineHorisontal = styled.div`
   height: 8px;
   width: 100%;
   background: #ebd8ff;
+
+  box-shadow: 0px 4.39163px 4.39163px rgba(0, 0, 0, 0.06),
+    inset 0px -2.19582px 4.39163px #ae7be3,
+    inset 0px 4.39163px 3.29372px #fbf8ff;
 `;
 
 export const AvatartWrapper = styled.div`
@@ -94,13 +97,22 @@ export const AvatartWrapper = styled.div`
 
   width: 80px;
   height: 80px;
-  border: 8px solid;
+  /* border: 8px solid; */
+  background-color: rgb(235, 216, 255);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 4px,
+    rgb(174, 123, 227) 0px -2px 4px inset, rgb(251, 248, 255) 0px 4px 3px inset;
   border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const UserAvatar = styled.img`
   border-radius: 50%;
   overflow: hidden;
+  width: 62px;
+  height: 62px;
 `;
 
 export const Desc = styled.div`

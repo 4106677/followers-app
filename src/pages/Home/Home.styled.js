@@ -51,3 +51,17 @@ export const Btn = styled(NavLink)`
   font-size: 18px;
   line-height: 22px;
 `;
+
+export const AvatarImg = styled.img`
+  transform: scale(1, 1);
+  transition: 300ms;
+
+  &:hover {
+    transform: rotateY(3.142rad);
+    transition: 300ms;
+  }
+  width: 90px;
+  height: 90px;
+
+  border-radius: 50%;
+`;

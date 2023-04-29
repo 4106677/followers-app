@@ -67,10 +67,8 @@ const UsersList = () => {
 
       return user;
     })
-    // .sort((a, b) => a.id - b.id);
-    .splice(0, limit * page);
 
-  console.log(filtredUsers);
+    .splice(0, limit * page);
 
   return (
     <>
