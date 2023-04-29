@@ -16,10 +16,14 @@ React, Styled-components, Axios
 | `followers` | `number`    |               |
 | `avatar`    | `faker.js`  | image.avatar  |
 
+## Scripts
+
 ```bash
-  "start": "react-scripts start",
-    "build": "react-scripts build",
+"start": "react-scripts start",
+"build": "react-scripts build",
 ```
+
+## Demo
 
 <p align="center" flexDirection="row">
   <img src="./src/images/demo.gif" width="600" title="hover text">
