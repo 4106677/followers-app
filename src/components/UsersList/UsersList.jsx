@@ -18,12 +18,13 @@ import { compared } from '../../helpers/compared';
 import { LoadMore } from 'components/LoadMore/LoadMore';
 import { matchMedia } from 'helpers/matchMedia';
 import { Dropdown } from 'components/Filter/Filter';
+import Loader from 'components/Loader/Loader';
 
 const UsersList = () => {
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
   const [isMore, setIsMore] = useState(false);
-  // const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [filter, setFilter] = useState(() => {
     return JSON.parse(localStorage.getItem('filter')) ?? 'all';
   });
@@ -35,12 +36,14 @@ const UsersList = () => {
 
   useEffect(() => {
     (async () => {
+      setIsLoading(true);
       const data = await getUsers(page, limit);
 
       setIsMore((await getUsers()) / limit <= page);
       setUsers(prevUsers => {
         return [...compared(prevUsers, data), ...data];
       });
+      setIsLoading(false);
     })();
   }, [page, limit]);
 
@@ -72,6 +75,7 @@ const UsersList = () => {
 
   return (
     <>
+      {isLoading && <Loader />}
       <NavContainer>
         <Btn to={'/'}>To Home</Btn>
         <Dropdown setFilter={setFilter} def={filter} />
