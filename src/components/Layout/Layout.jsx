@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 
 import { Container } from './Layout.styled';
 
-export const Layout = () => {
+const Layout = () => {
   return (
     <Container>
       <Suspense>
@@ -12,3 +12,5 @@ export const Layout = () => {
     </Container>
   );
 };
+
+export default Layout;

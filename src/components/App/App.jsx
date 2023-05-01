@@ -1,10 +1,11 @@
 import { lazy } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { Layout } from '../Layout/Layout';
+import { Navigate, Route, Routes } from 'react-router-dom';
+
 import { GlobalStyle } from './GlobalStyles';
 
 const Home = lazy(() => import('../../pages/Home/Home'));
 const UsersList = lazy(() => import('../UsersList/UsersList'));
+const Layout = lazy(() => import('../Layout/Layout'));
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="tweets" element={<UsersList />} />
+          <Route path="*" element={<Navigate replace to="/" />} />
         </Route>
       </Routes>
       <GlobalStyle />
